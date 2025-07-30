@@ -12,8 +12,8 @@ app.use(cors({origin:"*"}))
 app.use("/user", userrouter)
 
 
-const port = process.env.PORT || 4000
-app.listen(()=>{
+const port = process.env.PORT || 5006
+app.listen(port, () => {
     console.log(`app started on port ${port}`); 
 })
 
