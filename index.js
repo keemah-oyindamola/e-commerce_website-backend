@@ -8,7 +8,8 @@ const userrouter = require("./route/userrouter")
 
 app.use(express.urlencoded({extended: true, limit:"100mb"}))
 app.use(express.json({limit:"100mb"}))
-app.use(cors({origin:"https://e-commerce-website-two-iota-42.vercel.app"}))
+// app.use(cors({origin:"https://e-commerce-website-two-iota-42.vercel.app"}))
+
 app.use("/user", userrouter)
 
 
