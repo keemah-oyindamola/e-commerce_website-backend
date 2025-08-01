@@ -1,18 +1,19 @@
 const mongoose = require('mongoose')
 const user_model = require("../model/usermodel")
 const bcrypt = require('bcrypt')
-const signup = async () => {
+const signup = async (req, res) => {
     try {
         console.log(req.body);
         const { username, email, password } = req.body
-        if (username == "", email == "", password == "") {
+        if (!username || !email || !password) {
             res.status(402).send({ message: "Input fields cant be empty", status: false })
         }
         const verifyEmail = await user_model.findOne({ email: email })
-        const verifyUsername = await user_model.findOne({ username: username })
         if (verifyEmail) {
             res.status(402).send({ message: "user already exist", status: false })
         }
+
+         const verifyUsername = await user_model.findOne({ username: username })
         if (verifyUsername) {
             res.status(405).send({ message: "username already in use", status: false })
         }
@@ -27,6 +28,7 @@ const signup = async () => {
             password: hashpassword
         })
         console.log(createuser);
+        
         if (!createuser) {
             res.status(409).send({ message: "Unable to sign user", status: false })
         }
