@@ -26,4 +26,8 @@ app.listen(port, () => {
     console.log(`app started on port ${port}`); 
 })
 
+app.get("/", (req, res) => {
+  res.send("Server is up and running!");
+});
+
 connect()
