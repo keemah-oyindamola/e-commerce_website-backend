@@ -57,7 +57,7 @@ const login = async(req, res)=>{
         if (!validpassword) {
             return res.status(409).send({message :"Invalid credentials", status:false})
         }
-        return res.status(200).send({message:"Login successful", status:true})
+        return res.status(200).send({message:"Login successful", status:true, user_emai:loggin_user.email, userid:loggin_user._id})
     } catch (error) {
         console.log(error);
         return res.status(500).send({message:"Internal server error", status:false})
