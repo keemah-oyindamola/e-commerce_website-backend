@@ -18,7 +18,6 @@ app.use(cors({
 app.options("*", cors()); // Allow preflight requests
 app.use("/user", userrouter)
 
-
 const port = process.env.PORT || 5006
 app.listen(port, () => {
     console.log(`app started on port ${port}`); 
